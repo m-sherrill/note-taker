@@ -4,9 +4,9 @@ const path = require('path');
 const { clog } = require('./middleware/clog');
 const api = require('./routes/notes.js');
 
-// const PORT = process.env.port || 3001;
+const PORT = process.env.port || 3001;
 
-const PORT = 3001;
+// const PORT = 3001;
 
 const app = express();
 
@@ -31,9 +31,9 @@ app.get('/notes', (req, res) =>
 );
 
 // Wildcard route to direct users to a 404 page
-// app.get('*', (req, res) =>
-//   res.sendFile(path.join(__dirname, 'public/404.html'))
-// );
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, 'public/404.html'))
+);
 
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)

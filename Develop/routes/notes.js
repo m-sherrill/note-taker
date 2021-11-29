@@ -6,10 +6,9 @@ const { readAndAppend, readFromFile, writeToFile } = require('../helpers/fsUtils
 const noteDB = require("../db/notes.json")
 
 notes.get('/notes', (req, res) => {
-    console.info(`${req.method} request received for notes`);
-    readFromFile('./db/notes.json').then((data) => res.json(JSON.parse(data)));
-  });
-
+  console.info(`${req.method} request received for notes`);
+  readFromFile('./db/notes.json').then((data) => res.json(JSON.parse(data)));
+});
 
 notes.post('/notes', (req, res) => {
     console.log(req.body);
@@ -30,6 +29,7 @@ notes.post('/notes', (req, res) => {
     }
   });
 
+ 
   // Retrieves a note with specific id
   notes.get("/notes/:id", function(req,res) {
     // display json for the notes array indices of the provided id
