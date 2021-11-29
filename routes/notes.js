@@ -36,27 +36,20 @@ notes.post('/notes', (req, res) => {
     res.json(notes[req.params.id]);
 });
 
+
 notes.delete("/notes/:id", function (req, res) {
-    let jsonFilePath = path.join(__dirname, "../db/notes.json");
-    // request to delete note by id.
-    for (let i = 0; i < noteDB.length; i++) {
+  let jsonFilePath = path.join(__dirname, "../db/notes.json");
+  // request to delete note by id.
+  for (let i = 0; i < noteDB.length; i++) {
 
-        if (noteDB[i].id == req.params.id) {
-            noteDB.splice(i, 1);
-            break;
-        }
-    }
-    writeToFile(jsonFilePath, noteDB, function (err) {
-
-        if (err) {
-            return console.log(err);
-        } else {
-            console.log("Your note was deleted!");
-        }
-    });
-    res.json(noteDB);
+      if (noteDB[i].id == req.params.id) {
+          noteDB.splice(i, 1);
+          break;
+      }
+  }
+  writeToFile(jsonFilePath, noteDB)
+  res.json(noteDB);
 });
-
 
 
   module.exports = notes;
