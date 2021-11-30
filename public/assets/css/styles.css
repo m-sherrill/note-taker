@@ -3,7 +3,11 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: #555273;
+
 }
+
+
 
 .save-note {
   display: none;
@@ -16,12 +20,34 @@ body {
   cursor: pointer;
 }
 
+.row {
+  background-color: #E2EFF1;
+}
+
+a,
+a:visited {
+  color: white;
+  font-size: 50px;
+}
+
+a:hover {
+  color: #E2EFF1;
+  text-shadow: 1px 1px 5px #555273;
+}
+
 .note-textarea,
 .note-title {
+  margin: 0px;
   color: #000000;
   width: 100%;
   outline: none;
   border: none;
+  background-color: #E2EFF1;
+}
+
+.note-textarea::placeholder,
+.note-title::placeholder {
+  color: #65799B;
 }
 
 .note-textarea {
@@ -38,7 +64,12 @@ body {
 
 .note-title:read-only,
 .note-textarea:read-only {
-  color: #757575;
+  color: #555273;
+  
+}
+
+.note-title:read-only {
+  font-family: 'Fredericka the Great', cursive;
 }
 
 .list-container .card {
@@ -75,4 +106,15 @@ body {
   border-right: none;
   padding: 20px;
   cursor: pointer;
+}
+
+#navbar {
+  background-color: #E23E57;
+  color: #E2EFF1;
+  
+}
+
+.nav-brand {
+  font-size: 50px;
+  font-family: 'Fredericka the Great', cursive;
 }
