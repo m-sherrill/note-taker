@@ -1,4 +1,5 @@
 const notes = require('express').Router();
+const lodash = require('lodash')
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 const { readAndAppend, readFromFile, writeToFile } = require('../helpers/fsUtils');
@@ -39,7 +40,6 @@ notes.post('/', (req, res) => {
 
 notes.delete("/:id", function (req, res) {
   let jsonFilePath = path.join(__dirname, "../db/notes.json");
-  // request to delete note by id.
   for (let i = 0; i < noteDB.length; i++) {
 
       if (noteDB[i].id == req.params.id) {
@@ -50,6 +50,7 @@ notes.delete("/:id", function (req, res) {
   writeToFile(jsonFilePath, noteDB)
   res.json(noteDB);
 });
+
 
 
   module.exports = notes;
