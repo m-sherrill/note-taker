@@ -38,18 +38,16 @@ notes.post('/', (req, res) => {
 });
 
 
-notes.delete("/:id", function (req, res) {
-  let jsonFilePath = path.join(__dirname, "../db/notes.json");
-  for (let i = 0; i < noteDB.length; i++) {
-
-      if (noteDB[i].id == req.params.id) {
-          noteDB.splice(i, 1);
-          break;
-      }
-  }
-  writeToFile(jsonFilePath, noteDB)
-  res.json(noteDB);
-});
+notes.delete('/:id', function (req, res) {
+  let jsonFilePath = path.join(__dirname, "../db/notes.json")
+    console.log("DELETE ID", req.params.id)
+    const filtered = noteDB.filter((note) => {
+      return note.id !== req.params.id;
+   })
+    console.log(filtered)
+    writeToFile(jsonFilePath, filtered)
+    res.json(noteDB)
+  })
 
 
 
