@@ -39,15 +39,22 @@ notes.post('/', (req, res) => {
 
 notes.delete('/:id', function (req, res) {
   let jsonFilePath = path.join(__dirname, "../db/notes.json")
+  const noteID = req.params.id
   console.log("DELETE ID", req.params.id)
+  readFromFile(jsonFilePath)
+  .then((data) => JSON.parse(data))
+  .then((json) => {
+    // Make a new array of all tips except the one with the ID provided in the URL
+    const result = json.filter((note) => note.id !== noteID)
+    writeToFile(jsonFilePath, result)
+    res.json(`deleted`);
+  })
     
-  const filtered = noteDB.filter((note) => {
-      return note.id !== req.params.id;
-   })
+  // const filtered = noteDB.filter((note) => {
+  //     return note.id !== req.params.id;
+  //  })
 
-    console.log(filtered)
-    writeToFile(jsonFilePath, filtered)
-    readFromFile('./db/notes.json').then((data) => res.json(noteDB))
+   
   })
 
 
