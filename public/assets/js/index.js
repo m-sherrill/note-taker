@@ -12,6 +12,8 @@ if (window.location.pathname === '/notes') {
   noteList = document.querySelectorAll('.list-container .list-group');
 }
 
+
+
 // Show an element
 const show = (elem) => {
   elem.style.display = 'inline';
@@ -155,7 +157,7 @@ const renderNoteList = async (notes) => {
   };
 
   if (jsonNotes.length === 0) {
-    noteListItems.push(createLi('No saved Notes', false));
+    noteListItems.push(createLi('No Saved Notes', false));
   }
 
   jsonNotes.forEach((note) => {
@@ -179,5 +181,6 @@ if (window.location.pathname === '/notes') {
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
   noteText.addEventListener('keyup', handleRenderSaveBtn);
 }
+
 
 getAndRenderNotes();

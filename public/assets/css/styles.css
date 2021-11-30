@@ -4,6 +4,9 @@ body {
   margin: 0;
   padding: 0;
   background-color: #555273;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
 
 }
 
@@ -19,6 +22,7 @@ body {
   font-size: 1.5rem;
   cursor: pointer;
 }
+
 
 .row {
   background-color: #E2EFF1;
@@ -52,14 +56,17 @@ a:hover {
 
 .note-textarea {
   resize: none;
-  height: calc(100% - 63px);
+  height: calc(100% - 70px);
   padding-top: 15px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .note-title {
   height: 50px;
   margin-top: 13px;
   font-size: 3rem;
+  font-weight: bold;
 }
 
 .note-title:read-only,
@@ -68,8 +75,8 @@ a:hover {
   
 }
 
-.note-title:read-only {
-  font-family: 'Fredericka the Great', cursive;
+.note-textarea:read-only {
+  font-size: 20px;
 }
 
 .list-container .card {
@@ -116,5 +123,5 @@ a:hover {
 
 .nav-brand {
   font-size: 50px;
-  font-family: 'Fredericka the Great', cursive;
+  font-family: 'Josefin Sans', sans-serif;
 }
