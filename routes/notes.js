@@ -1,16 +1,16 @@
 const notes = require('express').Router();
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
-const util = require('util');
 const { readAndAppend, readFromFile, writeToFile } = require('../helpers/fsUtils');
 const noteDB = require("../db/notes.json")
 
-notes.get('/notes', (req, res) => {
+notes.get('/', (req, res) => {
   console.info(`${req.method} request received for notes`);
   readFromFile('./db/notes.json').then((data) => res.json(JSON.parse(data)));
 });
 
-notes.post('/notes', (req, res) => {
+
+notes.post('/', (req, res) => {
     console.log(req.body);
   
     const { title, text } = req.body;
@@ -23,21 +23,21 @@ notes.post('/notes', (req, res) => {
       };
   
       readAndAppend(newNote, './db/notes.json');
-      res.json(`Tip added successfully 🚀`);
+      res.json(`note added successfully 🚀`);
     } else {
-      res.error('Error in adding tip');
+      res.error('Error in adding note');
     }
   });
 
  
   // Retrieves a note with specific id
-  notes.get("/notes/:id", function(req,res) {
+  notes.get("/:id", function(req,res) {
     // display json for the notes array indices of the provided id
-    res.json(notes[req.params.id]);
+    readFromFile('./db/notes.json').then((data) => res.json(JSON.parse(req.params.id)));
 });
 
 
-notes.delete("/notes/:id", function (req, res) {
+notes.delete("/:id", function (req, res) {
   let jsonFilePath = path.join(__dirname, "../db/notes.json");
   // request to delete note by id.
   for (let i = 0; i < noteDB.length; i++) {
